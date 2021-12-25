@@ -1,0 +1,6 @@
+{
+  "testEnvironment": "jsdom",
+  "setupFilesAfterEnv": [
+    "<rootDir>/src/setupTests.ts"
+  ]
+}
