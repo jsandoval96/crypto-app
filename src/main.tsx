@@ -1,10 +1,21 @@
+import "@fontsource/roboto";
+import { CssBaseline } from "@mui/material";
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./App";
+import { Provider as StoreProvider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
+
+import App from "@app/App";
+import { store } from "@app/store";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <CssBaseline />
+    <BrowserRouter>
+      <StoreProvider store={store}>
+        <App />
+      </StoreProvider>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
 );
