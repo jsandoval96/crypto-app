@@ -2,7 +2,7 @@ import { CircularProgress } from "@mui/material";
 import { Suspense, lazy } from "react";
 import { Route, Routes } from "react-router-dom";
 
-import DefaultLayout from "@app/layouts/Default";
+import DefaultLayout from "@app/layouts/Default/Default";
 import Home from "@app/views/Home";
 
 const Auth = lazy(() => import("@app/views/Auth"));

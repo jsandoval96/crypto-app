@@ -2,12 +2,7 @@ import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import { Button } from "@mui/material";
 import { useLocation, useNavigate } from "react-router-dom";
 
-const links = [
-  { name: "Inicio", href: "/" },
-  { name: "Monedas", href: "/cryptocurrencies" },
-  { name: "Intercambios", href: "/exchanges" },
-  { name: "Noticias", href: "/news" },
-];
+import { LINKS } from "@app/constants/routes";
 
 const MenuLinks = () => {
   const navigate = useNavigate();
@@ -15,7 +10,7 @@ const MenuLinks = () => {
 
   return (
     <>
-      {links.map(({ name, href }, idx) => (
+      {LINKS.map(({ name, href }, idx) => (
         <Button
           key={idx}
           sx={{

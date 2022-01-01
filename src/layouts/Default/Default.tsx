@@ -3,8 +3,8 @@ import { AppBar, Box, Container, Divider, Drawer, IconButton, Stack, Toolbar } f
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
 
-import Logo from "@app/layouts/Logo";
-import MenuLinks from "@app/layouts/MenuLinks";
+import Logo from "@app/layouts/Default/Logo";
+import MenuLinks from "@app/layouts/Default/MenuLinks";
 
 const Default = () => {
   const [openSidebar, setOpenSidebar] = useState(false);
@@ -42,7 +42,9 @@ const Default = () => {
           <MenuLinks />
         </Box>
       </Drawer>
-      <Outlet />
+      <Box component="main">
+        <Outlet />
+      </Box>
     </>
   );
 };
