@@ -241,7 +241,7 @@ const Home = () => {
           </TableBody>
         </Table>
       </TableContainer> */}
-      {/* <Typography variant="h5" my={2} fontWeight="bold">
+      <Typography variant="h5" my={2} fontWeight="bold">
         Últimas noticias
       </Typography>
       <Splide
@@ -269,7 +269,7 @@ const Home = () => {
             />
           </SplideSlide>
         ))}
-      </Splide> */}
+      </Splide>
     </>
   );
 };
