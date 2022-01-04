@@ -42,7 +42,7 @@ const Default = () => {
           <MenuLinks />
         </Box>
       </Drawer>
-      <Box component="main">
+      <Box component="main" sx={{ px: { xs: 1.5, sm: 3, md: 6, lg: 12 } }}>
         <Outlet />
       </Box>
     </>

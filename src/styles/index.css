@@ -1,0 +1,9 @@
+.splide__slide {
+  display: flex;
+  justify-content: center;
+  margin: 0.5rem 0;
+}
+
+.splide__arrow > svg {
+  fill: #1976D2;
+}

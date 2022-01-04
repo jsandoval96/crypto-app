@@ -39,8 +39,8 @@ export interface CoinData {
   roi: Roi | null;
   last_updated: Date;
   sparkline_in_7d: SparklineIn7D;
-  price_change_percentage_1h_in_currency: number | null;
-  price_change_percentage_24h_in_currency: number | null;
+  price_change_percentage_1h_in_currency: number;
+  price_change_percentage_24h_in_currency: number;
   price_change_percentage_7d_in_currency: number;
 }
 
@@ -58,4 +58,38 @@ export enum Currency {
 
 export interface SparklineIn7D {
   price: number[];
+}
+
+export interface CoinTrending {
+  id: string;
+  coin_id: number;
+  name: string;
+  symbol: string;
+  market_cap_rank: number;
+  thumb: string;
+  small: string;
+  large: string;
+  slug: string;
+  price_btc: number;
+  score: number;
+}
+
+export interface News {
+  datePublished: Date;
+  description: string;
+  name: string;
+  url: string;
+  image: {
+    thumbnail: {
+      contentUrl: string;
+    };
+  };
+  provider: {
+    name: string;
+    image: {
+      thumbnail: {
+        contentUrl: string;
+      };
+    };
+  }[];
 }
