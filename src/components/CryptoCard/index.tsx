@@ -1,13 +1,15 @@
 import { ArrowDropDown, ArrowDropUp } from "@mui/icons-material";
 import { Box, Paper, Typography } from "@mui/material";
 
-const TrendingCard = ({ name, value, img, percent, children }: TrendingCard) => {
+const CryptoCard = ({ name, value, rank, img, percent, children }: CryptoCardProps) => {
   return (
     <Paper sx={{ display: "flex", flexDirection: "column" }}>
       <Box display="flex" p={2}>
         <img src={img} alt={name} height="40px" />
         <Box px={1}>
-          <Typography>{name}</Typography>
+          <Typography>
+            {rank && `${rank}.`} {name}
+          </Typography>
           <Typography fontWeight="bold">$ {value}</Typography>
         </Box>
         <Box marginLeft="auto" display="flex">
@@ -28,12 +30,13 @@ const TrendingCard = ({ name, value, img, percent, children }: TrendingCard) => 
   );
 };
 
-interface TrendingCard {
+interface CryptoCardProps {
   name: string;
   img: string;
+  rank?: string | number;
   value: string | number;
   percent: number | string;
   children: JSX.Element;
 }
 
-export default TrendingCard;
+export default CryptoCard;

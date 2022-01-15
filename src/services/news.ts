@@ -1,4 +1,4 @@
-import { News } from "@app/types";
+import { News } from "@app/types/api";
 
 const BASE_URL = import.meta.env.VITE_API_BING_NEWS_URL;
 const API_HOST = import.meta.env.VITE_API_BING_NEWS_HOST;
@@ -11,10 +11,10 @@ export const getNews = async ({
 }: {
   search: string;
   limit: number;
-  lang: string;
+  lang?: string;
 }) => {
   const res = await fetch(
-    `${BASE_URL}/news?q=${search}&count=${limit}&mkt=${lang}&freshness=Month&textFormat=Raw`,
+    `${BASE_URL}/news/search?q=${search}&count=${limit}&freshness=Month&textFormat=Raw`,
     {
       headers: {
         accept: "application/json",

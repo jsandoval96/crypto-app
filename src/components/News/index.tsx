@@ -4,7 +4,7 @@ import notFoundImg from "@app/assets/image-not-found.png";
 
 const News = ({ title, img, description, link }: NewsProps) => {
   return (
-    <Card sx={{ maxWidth: 300 }}>
+    <Card sx={{ maxWidth: 250 }}>
       <CardMedia
         component="img"
         height="140"

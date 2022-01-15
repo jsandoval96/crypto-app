@@ -1,6 +1,7 @@
 import Chart from "react-apexcharts";
 
-const LineChart = ({ data }: { data: number[] }) => {
+const LineChart = ({ data, isPositive }: { data: number[]; isPositive: boolean }) => {
+  const color = isPositive ? "#4caf50" : "#f44336";
   const options = {
     chart: {
       selection: {
@@ -18,6 +19,7 @@ const LineChart = ({ data }: { data: number[] }) => {
     },
     stroke: {
       width: 1,
+      colors: [color],
     },
     dataLabels: {
       enabled: false,

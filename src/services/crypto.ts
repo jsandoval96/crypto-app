@@ -1,4 +1,4 @@
-import { CoinData, GlobalStats } from "@app/types";
+import { CoinData, GlobalStats } from "@app/types/api";
 
 const BASE_URL = import.meta.env.VITE_API_COINGECKO_URL;
 const API_HOST = import.meta.env.VITE_API_COINGECKO_HOST;
@@ -26,13 +26,13 @@ export const getGlobalStats = async () => {
     activeCryptocurrencies: active_cryptocurrencies,
     totalMarketCap: total_market_cap.usd.toLocaleString(),
     totalVolume24h: total_volume.usd.toLocaleString(),
-    marketCapChangePercentage24h: market_cap_change_percentage_24h_usd.toFixed(2),
+    marketCapChangePercentage24h: market_cap_change_percentage_24h_usd?.toFixed(2) || 0,
     marketDomainBtc: Math.trunc(market_cap_percentage.btc),
     exchanges: markets,
   };
 };
 
-export const getCoinsPaginated = async (page = 1, perPage = 50) => {
+export const getCoinsPaginated = async (page = 1, perPage = 20) => {
   const res = await fetch(
     `${BASE_URL}/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=${perPage}&page=${page}&sparkline=true&price_change_percentage=1h%2C24h%2C7d`,
     {
@@ -54,9 +54,9 @@ export const getCoinsPaginated = async (page = 1, perPage = 50) => {
       price: coin.current_price,
       marketCap: coin.market_cap.toLocaleString("en-US"),
       volume: coin.total_volume.toLocaleString("en-US"),
-      priceChangePercentage1h: coin.price_change_percentage_1h_in_currency.toFixed(2),
-      priceChangePercentage24h: coin.price_change_percentage_24h_in_currency.toFixed(2),
-      priceChangePercentage7d: coin.price_change_percentage_7d_in_currency.toFixed(2),
+      priceChangePercentage1h: coin.price_change_percentage_1h_in_currency?.toFixed(2) || 0,
+      priceChangePercentage24h: coin.price_change_percentage_24h_in_currency?.toFixed(2) || 0,
+      priceChangePercentage7d: coin.price_change_percentage_7d_in_currency?.toFixed(2) || 0,
       priceIn7days: coin.sparkline_in_7d.price,
     };
   });
@@ -88,7 +88,7 @@ export const getCoinsTrending = async () => {
       img: coin.image,
       price: coin.current_price,
       priceIn7days: coin.sparkline_in_7d.price,
-      priceChangePercentage7d: coin.price_change_percentage_7d_in_currency.toFixed(2),
+      priceChangePercentage7d: coin.price_change_percentage_7d_in_currency?.toFixed(2) || 0,
     };
   });
 };
@@ -98,8 +98,4 @@ export const getCoinInfo = async (coinId: string) => {
     `${BASE_URL}/coins/${coinId}?tickers=false&community_data=false&developer_data=false&sparkline=true`,
     { headers: { accept: "application/json" } }
   );
-};
-
-export const getExchanges = async () => {
-  return 9;
 };
