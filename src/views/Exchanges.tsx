@@ -54,14 +54,16 @@ const Exchanges = () => {
                 </TableCell>
                 <TableCell>{ex.year ?? "-"}</TableCell>
                 <TableCell>{ex.country ?? "-"}</TableCell>
-                <TableCell sx={{ display: "flex" }}>
-                  <Rating
-                    name="exchange-rating"
-                    defaultValue={Math.floor(ex.trustScore / 2)}
-                    precision={1}
-                    readOnly
-                  />
-                  <Typography mt={0.5}>{Math.floor(ex.trustScore / 2)}/5</Typography>
+                <TableCell>
+                  <Box display="flex">
+                    <Rating
+                      name="exchange-rating"
+                      defaultValue={Math.floor(ex.trustScore / 2)}
+                      precision={1}
+                      readOnly
+                    />
+                    <Typography mt={0.5}>{Math.floor(ex.trustScore / 2)}/5</Typography>
+                  </Box>
                 </TableCell>
                 <TableCell>{ex.trading24hVolumeBtc.toLocaleString("es-Cl")}</TableCell>
               </TableRow>

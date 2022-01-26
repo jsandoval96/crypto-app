@@ -2,9 +2,9 @@ import { Button, Card, CardActions, CardContent, CardMedia, Typography } from "@
 
 import notFoundImg from "@app/assets/image-not-found.png";
 
-const News = ({ title, img, description, link }: NewsProps) => {
+const News = ({ title, img, description, link, maxWidth = 250 }: NewsProps) => {
   return (
-    <Card sx={{ maxWidth: 250 }}>
+    <Card sx={{ maxWidth, height: "100%" }}>
       <CardMedia
         component="img"
         height="140"
@@ -12,7 +12,7 @@ const News = ({ title, img, description, link }: NewsProps) => {
         alt="green iguana"
         sx={{ objectFit: "contain" }}
       />
-      <CardContent>
+      <CardContent sx={{ height: 203 }}>
         <Typography
           gutterBottom
           variant="h6"
@@ -39,7 +39,7 @@ const News = ({ title, img, description, link }: NewsProps) => {
           {description}
         </Typography>
       </CardContent>
-      <CardActions>
+      <CardActions sx={{ mt: "auto" }}>
         <Button size="small" href={link} target="__blank">
           Leer más
         </Button>
@@ -53,6 +53,7 @@ interface NewsProps {
   img: string;
   description: string;
   link: string;
+  maxWidth?: number;
 }
 
 export default News;

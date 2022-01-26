@@ -5,15 +5,20 @@ import { News } from "@app/types/client";
 
 export const useNews = (limit = 0) => {
   const [news, setNews] = useState<News[]>([]);
+  const [searchText, setSearchText] = useState<string>("Criptomonedas");
 
   useEffect(() => {
     const fetchData = async () => {
-      const news = await getNews({ search: "Criptomonedas", limit });
+      const news = await getNews({ search: searchText, limit });
       setNews(news);
     };
 
     limit && fetchData();
-  }, [limit]);
+  }, [limit, searchText]);
 
-  return { news };
+  const findNews = (search: string) => {
+    setSearchText(!search ? "Criptomonedas" : search);
+  };
+
+  return { news, findNews, searchText };
 };
