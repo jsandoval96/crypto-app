@@ -133,7 +133,7 @@ const Home = () => {
       </Box>
       <Splide
         options={{
-          perPage: 1,
+          perPage: 5,
           type: "loop",
           gap: "1rem",
           pagination: false,

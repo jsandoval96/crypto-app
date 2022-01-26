@@ -24,7 +24,7 @@ interface ExchangeCardProps {
   img: string;
   rank: number;
   trustScore: number;
-  volume24h: number;
+  volume24h: number | string;
 }
 
 export default ExchangeCard;

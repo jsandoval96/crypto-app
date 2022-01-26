@@ -21,7 +21,9 @@ export const getExchanges = async (limit: number) => {
       img: item.image,
       trustScore: item.trust_score,
       trustRank: item.trust_score_rank,
-      trading24hVolumeBtc: item.trade_volume_24h_btc,
+      country: item.country,
+      year: item.year_established,
+      trading24hVolumeBtc: item.trade_volume_24h_btc.toLocaleString(),
     };
   });
 };

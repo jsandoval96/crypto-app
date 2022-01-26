@@ -40,7 +40,9 @@ export interface Exchange {
   name: string;
   url: string;
   img: string;
+  year: number;
+  country: string;
   trustScore: number;
   trustRank: number;
-  trading24hVolumeBtc: number;
+  trading24hVolumeBtc: number | string;
 }

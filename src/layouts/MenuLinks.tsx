@@ -23,14 +23,6 @@ const MenuLinks = () => {
           {name}
         </Button>
       ))}
-      <Button
-        variant="outlined"
-        color="primary"
-        startIcon={<PersonOutlinedIcon />}
-        sx={{ textTransform: "none", fontWeight: "bold" }}
-      >
-        Ingresar
-      </Button>
     </>
   );
 };
