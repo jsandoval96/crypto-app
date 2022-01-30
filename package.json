@@ -1,13 +1,15 @@
 {
   "name": "crypto-app",
   "version": "1.0.0",
+  "homepage":"https://jsandoval96.github.io/crypto-app",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
     "test": "jest",
     "lint": "eslint .",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "@emotion/react": "^11.7.1",
@@ -49,6 +51,7 @@
     "eslint-plugin-react": "^7.27.1",
     "eslint-plugin-react-hooks": "^4.3.0",
     "eslint-plugin-testing-library": "^5.0.1",
+    "gh-pages": "^3.2.3",
     "husky": "^7.0.4",
     "jest": "^27.4.5",
     "prettier": "^2.5.1",
