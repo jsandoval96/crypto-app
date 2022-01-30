@@ -1,5 +1,5 @@
 # CryptoApp
-_Web del mundo de critomonedas_
+_Web del mundo crypto_
 ### App [https://jsandoval96.github.io/crypto-app](https://jsandoval96.github.io/crypto-app)
 ## Construido con 🛠️
 
