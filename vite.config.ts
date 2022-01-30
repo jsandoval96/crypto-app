@@ -7,6 +7,7 @@ import tsconfigPaths from "vite-tsconfig-paths";
 gracefulFs.gracefulify(realFs);
 
 export default defineConfig({
+  base: "/crypto-app/",
   plugins: [react(), tsconfigPaths()],
   server: {
     fs: {
