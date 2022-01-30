@@ -10,7 +10,7 @@ import "@app/styles/index.css";
 ReactDOM.render(
   <React.StrictMode>
     <CssBaseline />
-    <BrowserRouter>
+    <BrowserRouter basename="/crypto-app">
       <App />
     </BrowserRouter>
   </React.StrictMode>,
