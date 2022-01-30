@@ -4,7 +4,7 @@
   "homepage":"https://jsandoval96.github.io/crypto-app",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "tsc --skipLibCheck && vite build",
     "preview": "vite preview",
     "test": "jest",
     "lint": "eslint .",

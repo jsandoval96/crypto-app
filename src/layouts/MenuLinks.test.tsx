@@ -2,7 +2,7 @@ import { prettyDOM, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
 import { LINKS } from "@app/constants/routes";
-import MenuLinks from "@app/layouts/Default/MenuLinks";
+import MenuLinks from "@app/layouts/MenuLinks";
 
 const mockUseNavigate = jest.fn();
 const mockUseLocation = jest.fn();
