@@ -8,6 +8,7 @@ export interface GlobalStats {
 }
 
 export interface CoinSimple {
+  id: string;
   name: string;
   symbol: string;
   img: string;
@@ -45,4 +46,29 @@ export interface Exchange {
   trustScore: number;
   trustRank: number;
   trading24hVolumeBtc: number | string;
+}
+
+export interface Crypto {
+  name: string;
+  symbol: string;
+  rank: number;
+  description: string;
+  img: string;
+  circulatingQuantity: number;
+  currentPrice: number;
+  marketCap: number;
+  totalSupply: number;
+  totalFullyDilutedValuation: number;
+  priceChangePercentage24h: number;
+  totalVolume24h: number;
+  spakline7d: number[];
+  links: {
+    homepage: string;
+    community: {
+      forum: string;
+      reddit: string;
+      twitter: string;
+      github: string;
+    };
+  };
 }

@@ -1,6 +1,7 @@
 import { ArrowDropDown, ArrowDropUp } from "@mui/icons-material";
 import {
   Box,
+  Chip,
   CircularProgress,
   MenuItem,
   Pagination,
@@ -16,6 +17,7 @@ import {
 } from "@mui/material";
 import React from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import { Link } from "react-router-dom";
 
 import Loading from "@app/components/Loading";
 import { useCoins } from "@app/hooks/useCoins";
@@ -71,7 +73,9 @@ const Cryptocurrencies = () => {
                 <TableCell>
                   <Box sx={{ display: "flex", gap: 1 }}>
                     <LazyLoadImage src={coin.img} alt={coin.name} height="25px" />
-                    <Typography>{coin.name}</Typography>
+                    <Link to={`/cryptocurrency/${coin.id}`} style={{ textDecoration: "none" }}>
+                      <Typography>{coin.name}</Typography>
+                    </Link>
                     <Typography fontWeight="bold" color="primary">
                       {coin.symbol}
                     </Typography>
@@ -83,46 +87,52 @@ const Cryptocurrencies = () => {
                   </Typography>
                 </TableCell>
                 <TableCell>
-                  <Box sx={{ display: "flex", alignItems: "center" }}>
-                    {coin.priceChangePercentage1h >= 0 ? (
-                      <ArrowDropUp color="success" fontSize="large" />
-                    ) : (
-                      <ArrowDropDown color="error" fontSize="large" />
-                    )}
-                    <Typography
-                      color={coin.priceChangePercentage1h >= 0 ? "success.main" : "error.main"}
-                    >
-                      {coin.priceChangePercentage1h}%
-                    </Typography>
-                  </Box>
+                  <Chip
+                    size="small"
+                    color={coin.priceChangePercentage1h >= 0 ? "success" : "error"}
+                    label={
+                      <Box sx={{ display: "flex", alignItems: "center" }}>
+                        {coin.priceChangePercentage1h >= 0 ? (
+                          <ArrowDropUp color="inherit" fontSize="large" />
+                        ) : (
+                          <ArrowDropDown color="inherit" fontSize="large" />
+                        )}
+                        {coin.priceChangePercentage1h}%
+                      </Box>
+                    }
+                  />
                 </TableCell>
                 <TableCell>
-                  <Box sx={{ display: "flex", alignItems: "center" }}>
-                    {coin.priceChangePercentage24h >= 0 ? (
-                      <ArrowDropUp color="success" fontSize="large" />
-                    ) : (
-                      <ArrowDropDown color="error" fontSize="large" />
-                    )}
-                    <Typography
-                      color={coin.priceChangePercentage24h >= 0 ? "success.main" : "error.main"}
-                    >
-                      {coin.priceChangePercentage24h}%
-                    </Typography>
-                  </Box>
+                  <Chip
+                    size="small"
+                    color={coin.priceChangePercentage24h >= 0 ? "success" : "error"}
+                    label={
+                      <Box sx={{ display: "flex", alignItems: "center" }}>
+                        {coin.priceChangePercentage24h >= 0 ? (
+                          <ArrowDropUp color="inherit" fontSize="large" />
+                        ) : (
+                          <ArrowDropDown color="inherit" fontSize="large" />
+                        )}
+                        {coin.priceChangePercentage24h}%
+                      </Box>
+                    }
+                  />
                 </TableCell>
                 <TableCell>
-                  <Box sx={{ display: "flex", alignItems: "center" }}>
-                    {coin.priceChangePercentage7d >= 0 ? (
-                      <ArrowDropUp color="success" fontSize="large" />
-                    ) : (
-                      <ArrowDropDown color="error" fontSize="large" />
-                    )}
-                    <Typography
-                      color={coin.priceChangePercentage7d >= 0 ? "success.main" : "error.main"}
-                    >
-                      {coin.priceChangePercentage7d}%
-                    </Typography>
-                  </Box>
+                  <Chip
+                    size="small"
+                    color={coin.priceChangePercentage7d >= 0 ? "success" : "error"}
+                    label={
+                      <Box sx={{ display: "flex", alignItems: "center" }}>
+                        {coin.priceChangePercentage7d >= 0 ? (
+                          <ArrowDropUp color="inherit" fontSize="large" />
+                        ) : (
+                          <ArrowDropDown color="inherit" fontSize="large" />
+                        )}
+                        {coin.priceChangePercentage7d}%
+                      </Box>
+                    }
+                  />
                 </TableCell>
                 <TableCell>
                   <Typography variant="body2">$ {coin.volume}</Typography>

@@ -66,67 +66,67 @@ const Default = () => {
           <MenuLinks />
         </Box>
       </Drawer>
+      <Stack
+        spacing={{ xs: 0, sm: 3 }}
+        direction={{ xs: "column", sm: "row" }}
+        my={1}
+        justifyContent="center"
+        alignItems="center"
+        flexWrap="wrap"
+      >
+        <Box display="flex" gap={0.5}>
+          <Typography fontWeight="bold" variant="body2">
+            Monedas:
+          </Typography>
+          <Typography color="primary" variant="body2">
+            {globalStats?.activeCryptocurrencies}
+          </Typography>
+        </Box>
+        <Box display="flex" gap={0.5}>
+          <Typography fontWeight="bold" variant="body2">
+            Intercambios:
+          </Typography>
+          <Typography color="primary" variant="body2">
+            {globalStats?.exchanges}
+          </Typography>
+        </Box>
+        <Box display="flex" gap={0.5}>
+          <Typography fontWeight="bold" variant="body2">
+            Cap. de mercado:
+          </Typography>
+          <Typography color="primary" variant="body2">
+            $ {globalStats?.totalMarketCap}
+          </Typography>
+          <Box display="flex" alignItems="center">
+            {capMarketWentUp ? (
+              <ArrowDropUp color="success" fontSize="small" />
+            ) : (
+              <ArrowDropDown color="error" fontSize="small" />
+            )}
+            <Typography variant="caption" color={capMarketWentUp ? "success.main" : "error.main"}>
+              {globalStats?.marketCapChangePercentage24h}%
+            </Typography>
+          </Box>
+        </Box>
+        <Box display="flex" gap={0.5}>
+          <Typography fontWeight="bold" variant="body2">
+            Vol. de mercado(24h):
+          </Typography>
+          <Typography color="primary" variant="body2">
+            $ {globalStats?.totalVolume24h}
+          </Typography>
+        </Box>
+        <Box display="flex" gap={0.5}>
+          <Typography fontWeight="bold" variant="body2">
+            Dominio del bitcoin:
+          </Typography>
+          <Typography color="primary" variant="body2">
+            {globalStats?.marketDomainBtc}%
+          </Typography>
+        </Box>
+      </Stack>
+      <Divider />
       <Box component="main" sx={{ px: { xs: 1.5, sm: 3, md: 6, lg: 12 } }} pb={1.5}>
-        <Stack
-          spacing={{ xs: 0, sm: 3 }}
-          direction={{ xs: "column", sm: "row" }}
-          my={1}
-          justifyContent="center"
-          alignItems="center"
-          flexWrap="wrap"
-        >
-          <Box display="flex" gap={0.5}>
-            <Typography fontWeight="bold" variant="body2">
-              Monedas:
-            </Typography>
-            <Typography color="primary" variant="body2">
-              {globalStats?.activeCryptocurrencies}
-            </Typography>
-          </Box>
-          <Box display="flex" gap={0.5}>
-            <Typography fontWeight="bold" variant="body2">
-              Intercambios:
-            </Typography>
-            <Typography color="primary" variant="body2">
-              {globalStats?.exchanges}
-            </Typography>
-          </Box>
-          <Box display="flex" gap={0.5}>
-            <Typography fontWeight="bold" variant="body2">
-              Cap. de mercado:
-            </Typography>
-            <Typography color="primary" variant="body2">
-              $ {globalStats?.totalMarketCap}
-            </Typography>
-            <Box display="flex" alignItems="center">
-              {capMarketWentUp ? (
-                <ArrowDropUp color="success" fontSize="small" />
-              ) : (
-                <ArrowDropDown color="error" fontSize="small" />
-              )}
-              <Typography variant="caption" color={capMarketWentUp ? "success.main" : "error.main"}>
-                {globalStats?.marketCapChangePercentage24h}%
-              </Typography>
-            </Box>
-          </Box>
-          <Box display="flex" gap={0.5}>
-            <Typography fontWeight="bold" variant="body2">
-              Vol. de mercado(24h):
-            </Typography>
-            <Typography color="primary" variant="body2">
-              $ {globalStats?.totalVolume24h}
-            </Typography>
-          </Box>
-          <Box display="flex" gap={0.5}>
-            <Typography fontWeight="bold" variant="body2">
-              Dominio del bitcoin:
-            </Typography>
-            <Typography color="primary" variant="body2">
-              {globalStats?.marketDomainBtc}%
-            </Typography>
-          </Box>
-        </Stack>
-        <Divider />
         <Outlet />
       </Box>
     </>

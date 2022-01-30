@@ -46,25 +46,27 @@ const Home = () => {
       <Grid container spacing={2}>
         {trendingCoins.map((coin, idx) => (
           <Grid item xs={12} sm={6} md={4} lg={3} key={idx}>
-            <CryptoCard
-              name={coin.name}
-              value={coin.price}
-              img={coin.img}
-              percent={coin.priceChangePercentage7d}
-            >
-              <React.Suspense
-                fallback={
-                  <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-                    <CircularProgress />
-                  </Box>
-                }
+            <Link to={`/cryptocurrency/${coin.id}`} style={{ textDecoration: "none" }}>
+              <CryptoCard
+                name={coin.name}
+                value={coin.price}
+                img={coin.img}
+                percent={coin.priceChangePercentage7d}
               >
-                <MiniChart
-                  data={coin.priceIn7days}
-                  isPositive={coin.priceChangePercentage7d >= 0}
-                />
-              </React.Suspense>
-            </CryptoCard>
+                <React.Suspense
+                  fallback={
+                    <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+                      <CircularProgress />
+                    </Box>
+                  }
+                >
+                  <MiniChart
+                    data={coin.priceIn7days}
+                    isPositive={coin.priceChangePercentage7d >= 0}
+                  />
+                </React.Suspense>
+              </CryptoCard>
+            </Link>
           </Grid>
         ))}
       </Grid>
@@ -79,26 +81,28 @@ const Home = () => {
       <Grid container spacing={2}>
         {coins.map((coin, idx) => (
           <Grid item xs={12} sm={6} md={4} lg={3} key={idx}>
-            <CryptoCard
-              name={coin.name}
-              value={coin.price}
-              img={coin.img}
-              percent={coin.priceChangePercentage7d}
-              rank={coin.rank}
-            >
-              <React.Suspense
-                fallback={
-                  <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-                    <CircularProgress />
-                  </Box>
-                }
+            <Link to={`/cryptocurrency/${coin.id}`} style={{ textDecoration: "none" }}>
+              <CryptoCard
+                name={coin.name}
+                value={coin.price}
+                img={coin.img}
+                percent={coin.priceChangePercentage7d}
+                rank={coin.rank}
               >
-                <MiniChart
-                  data={coin.priceIn7days}
-                  isPositive={coin.priceChangePercentage7d >= 0}
-                />
-              </React.Suspense>
-            </CryptoCard>
+                <React.Suspense
+                  fallback={
+                    <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+                      <CircularProgress />
+                    </Box>
+                  }
+                >
+                  <MiniChart
+                    data={coin.priceIn7days}
+                    isPositive={coin.priceChangePercentage7d >= 0}
+                  />
+                </React.Suspense>
+              </CryptoCard>
+            </Link>
           </Grid>
         ))}
       </Grid>
@@ -113,13 +117,15 @@ const Home = () => {
       <Grid container spacing={2}>
         {exchanges.map((exchange, idx) => (
           <Grid item xs={12} sm={6} md={4} lg={3} key={idx}>
-            <ExchangeCard
-              name={exchange.name}
-              img={exchange.img}
-              rank={exchange.trustRank}
-              trustScore={exchange.trustScore}
-              volume24h={exchange.trading24hVolumeBtc}
-            />
+            <a href={exchange.url} style={{ textDecoration: "none" }}>
+              <ExchangeCard
+                name={exchange.name}
+                img={exchange.img}
+                rank={exchange.trustRank}
+                trustScore={exchange.trustScore}
+                volume24h={exchange.trading24hVolumeBtc}
+              />
+            </a>
           </Grid>
         ))}
       </Grid>

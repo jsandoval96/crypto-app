@@ -18,7 +18,11 @@ const CryptoCard = ({ name, value, rank, img, percent, children }: CryptoCardPro
           ) : (
             <ArrowDropDown color="error" fontSize="small" />
           )}
-          <Typography variant="body2" color={percent >= 0 ? "success.main" : "error.main"}>
+          <Typography
+            variant="body1"
+            fontWeight="bold"
+            color={percent >= 0 ? "success.main" : "error.main"}
+          >
             {percent}%
           </Typography>
         </Box>

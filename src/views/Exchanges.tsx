@@ -47,10 +47,12 @@ const Exchanges = () => {
               <TableRow key={ex.name}>
                 <TableCell>{ex.trustRank}</TableCell>
                 <TableCell>
-                  <Box sx={{ display: "flex", gap: 1 }}>
-                    <LazyLoadImage src={ex.img} alt={ex.name} height="25px" />
-                    <Typography>{ex.name}</Typography>
-                  </Box>
+                  <a href={ex.url} style={{ textDecoration: "none", color: "black" }}>
+                    <Box sx={{ display: "flex", gap: 1 }}>
+                      <LazyLoadImage src={ex.img} alt={ex.name} height="25px" />
+                      <Typography>{ex.name}</Typography>
+                    </Box>
+                  </a>
                 </TableCell>
                 <TableCell>{ex.year ?? "-"}</TableCell>
                 <TableCell>{ex.country ?? "-"}</TableCell>
@@ -65,7 +67,11 @@ const Exchanges = () => {
                     <Typography mt={0.5}>{Math.floor(ex.trustScore / 2)}/5</Typography>
                   </Box>
                 </TableCell>
-                <TableCell>{ex.trading24hVolumeBtc.toLocaleString("es-Cl")}</TableCell>
+                <TableCell>
+                  <Typography fontWeight="bold">
+                    {ex.trading24hVolumeBtc.toLocaleString("es-Cl")}
+                  </Typography>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>

@@ -8,12 +8,21 @@ import Home from "@app/views/Home";
 const Cryptocurrencies = lazy(() => import("@app/views/Cryptocurrencies"));
 const Exchanges = lazy(() => import("@app/views/Exchanges"));
 const News = lazy(() => import("@app/views/News"));
+const Cryptocurrency = lazy(() => import("@app/views/Cryptocurrency"));
 
 const App = () => {
   return (
     <Routes>
       <Route path="/" element={<DefaultLayout />}>
         <Route index element={<Home />} />
+        <Route
+          path="cryptocurrency/:crypto"
+          element={
+            <Suspense fallback={<CircularProgress />}>
+              <Cryptocurrency />
+            </Suspense>
+          }
+        />
         <Route
           path="cryptocurrencies"
           element={

@@ -1,4 +1,5 @@
 import { CoinData, GlobalStats } from "@app/types/api";
+import { Crypto } from "@app/types/client";
 
 const BASE_URL = import.meta.env.VITE_API_COINGECKO_URL;
 const API_HOST = import.meta.env.VITE_API_COINGECKO_HOST;
@@ -47,6 +48,7 @@ export const getCoinsPaginated = async (page = 1, perPage = 20) => {
 
   return data.map((coin: CoinData) => {
     return {
+      id: coin.id,
       rank: coin.market_cap_rank,
       name: coin.name,
       symbol: coin.symbol,
@@ -83,6 +85,7 @@ export const getCoinsTrending = async () => {
 
   return data.map((coin: CoinData) => {
     return {
+      id: coin.id,
       name: coin.name,
       symbol: coin.symbol,
       img: coin.image,
@@ -93,9 +96,42 @@ export const getCoinsTrending = async () => {
   });
 };
 
-export const getCoinInfo = async (coinId: string) => {
+export const getCoinInfo = async (coinId: string): Promise<Crypto> => {
   const res = await fetch(
     `${BASE_URL}/coins/${coinId}?tickers=false&community_data=false&developer_data=false&sparkline=true`,
-    { headers: { accept: "application/json" } }
+    {
+      headers: {
+        accept: "application/json",
+        "x-rapidapi-host": API_HOST,
+        "x-rapidapi-key": API_KEY,
+      },
+    }
   );
+
+  const coin = await res.json();
+
+  return {
+    name: coin.name,
+    symbol: coin.symbol,
+    rank: coin.coingecko_rank,
+    description: coin.description,
+    img: coin.image.small,
+    circulatingQuantity: coin.market_data.circulating_supply.toLocaleString(),
+    currentPrice: coin.market_data.current_price.usd,
+    marketCap: coin.market_data.market_cap.usd.toLocaleString(),
+    totalSupply: coin.market_data.total_supply?.toLocaleString() || 0,
+    totalFullyDilutedValuation: coin.market_data.fully_diluted_valuation.usd?.toLocaleString() || 0,
+    priceChangePercentage24h: coin.market_data.price_change_percentage_24h.toFixed(2),
+    totalVolume24h: coin.market_data.total_volume.usd.toLocaleString(),
+    spakline7d: coin.market_data.sparkline_7d.price,
+    links: {
+      homepage: coin.links.homepage[0],
+      community: {
+        forum: coin.links.official_forum_url[0],
+        reddit: coin.links.subreddit_url,
+        twitter: coin.links.twitter_screen_name,
+        github: coin.links.repos_url.github[0],
+      },
+    },
+  };
 };
